@@ -52,7 +52,9 @@ let libro8= new Libros ("Tres ensayos de la teoría sexual","Sigmund Freud",1905
 let libreria=[libro1,libro2,libro3,libro4,libro5,libro6,libro7,libro8]
 
 
-
+if (localStorage.getItem("Librería") === null) {
+  localStorage.setItem("Librería", JSON.stringify(libreria));
+}
 
 
 if (localStorage.getItem("libros")) {
@@ -63,11 +65,6 @@ if (localStorage.getItem("libros")) {
 
 
 const btnagregarProdu= document.getElementById("ingProd")
-let inputTitulo=document.getElementById("inputtit")
-    let inputAutor=document.getElementById("inputAutor")
-    let inputAnio=document.getElementById("inputAnio")
-    let inputStock=document.getElementById("inputStock")
-    let inputPrecio=document.getElementById("inputPrecio")
 const elemento = document.getElementsByClassName("bg_ingreso");
 const btnAgregar=document.getElementById("agregarBtn");
 
@@ -82,21 +79,83 @@ btnagregarProdu.addEventListener("click", ()=>{
 
 
   
+/*sUBIR UN LIBRO Y PONERLO A LA VENTA*/
 
-
-btnAgregar.addEventListener("click", function(){ let nLibro = new Libros (inputTitulo.value, inputAutor.value, inputAnio.value, inputStock.value , inputPrecio.value);
-  JSON.parse(localStorage.getItem("Librería")) 
-   libreria.push(nLibro)
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: false,
-      timer: 1500
-      
-    })
-    ,console.log(libreria)
-     const liberiaconJon= JSON.stringify(libreria)
-     localStorage.setItem("Librería", liberiaconJon)})
-     
+btnAgregar.addEventListener("click", function(){
+    let titulo = document.getElementById("inputtit").value;
+    let autor = document.getElementById("inputAutor").value;
+    let anio = document.getElementById("inputAnio").value;
+    let stock = document.getElementById("inputStock").value;
+    let precio = document.getElementById("inputPrecio").value;
+    const traerLibreria=JSON.parse(localStorage.getItem("Librería"))|| [] ;
   
+    let libro = new Libros(titulo,autor, anio, stock, precio);
+  
+    if (traerLibreria.some((x) => x.titulo === titulo && x.anio === anio)) {
+      Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: "¡El producto ya existe!",
+        footer: '<a href="">¿Por qué tengo este problema?</a>',
+      });
+    } else {
+      traerLibreria.push(libro);
+      localStorage.setItem("Librería", JSON.stringify(traerLibreria));
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Tu trabajo ha sido guardado",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  })
+   
+    /*CONSULTAR SOBRE AUTOR Y TÍTULO*/   
+    
+     const miBibliote=[]
+     const filtrarBtn = document.getElementById("buscar");
+      filtrarBtn.addEventListener("click", () => {
+        filtrarProductos();
+      });
+     
+     function filtrarProductos(){
+      const traerLibreria=JSON.parse(localStorage.getItem("Librería"))|| [] ;
+     
+      Swal.fire({
+          title: 'Ingrese título del libro o nombre de autor',
+          input: 'text',
+          showCancelButton: true,
+          confirmButtonText: 'Buscar',
+          showLoaderOnConfirm: true,
+  
+          preConfirm: (palabraClave) => {
+              palabraClave = palabraClave.trim().toUpperCase()
+              let resultado = traerLibreria.filter((x)=> x.titulo.toUpperCase().includes(palabraClave)|| x.autor.toUpperCase().includes(palabraClave))
+  
+               if (resultado.length > 0){
+                  console.table(resultado)
+                 
+                  Swal.fire({
+                      title: 'Resultados de búsqueda',
+                      html: '<table><tr><th>Titulo</th><th>Autor</th><th>Año</th><th>Stock</th><th>Precio</th></tr>' +
+                            resultado.map(x=> `<tr><td>${x.titulo}</td><td>${x.autor}</td><td>${x.anio}</td><td>${x.stock}</td><td>${x.precio}</td></tr>`).join('') +
+                            '</table>',
+                      confirmButtonText: 'OK'
+                      
+                  })
+                  miBibliote.push(x.titulo && x.autor)
+                  
+              } else {
+                  Swal.fire({
+                      title: 'No se encontraron coincidencias',
+                      icon: 'error',
+                      confirmButtonText: 'OK'
+                  })
+              }
+          }
+      });
+  
+  }
+  
+  console.table(traerLibreria)

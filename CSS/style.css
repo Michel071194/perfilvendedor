@@ -5,7 +5,14 @@
 }
 
 
-
+.bg_nav {
+    background-color: brown;
+    height: 60px;
+    width: 1100px;
+    padding: 10px;
+    padding-left: 100px;
+    margin-left: 40px;
+}
 
 .bg_ingreso{
     background-color: aquamarine;
@@ -17,5 +24,6 @@
 }
 
 .body{
-    background-color: rgb(216, 128, 20);
+    background-color: rgb(211, 201, 201);
+   width: 90%;
 }
