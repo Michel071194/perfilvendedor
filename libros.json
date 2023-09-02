@@ -1,0 +1,61 @@
+{
+    "libros": [
+      {
+        "titulo": "La vida breve",
+        "autor": "Juan Carlos Onetti",
+        "anio":1950,
+        "stock": 20,
+        "precio": 1000
+        
+      },
+      {
+        "titulo": "Los adioses",
+        "autor": "Juan Carlos Onetti",
+        "anio":1954,
+        "stock": 5,
+        "precio": 1200 
+      },
+      {
+        "titulo": "Quién de nosotros",
+        "autor": "Mario Benedetti",
+        "anio":1953,
+        "stock": 10,
+        "precio": 1000
+      },
+      {
+        "titulo": "Montevideanos",
+        "autor": "Mario Benedetti",
+        "anio":1954,
+        "stock": 10,
+        "precio": 900
+      },
+      {
+        "titulo": "Ética",
+        "autor": "Baruch Spinoza",
+        "anio":1866,
+        "stock": 2,
+        "precio": 1500
+      },
+      {
+        "titulo": "Fenomenología del espiritu",
+        "autor": "George Hegel",
+        "anio":1980,
+        "stock": 2,
+        "precio": 2000
+      },
+      {
+        "titulo": "La interpretación de los sueños",
+        "autor": "Sigmund Freud",
+        "anio":1900,
+        "stock": 2,
+        "precio": 1500
+      },
+      {
+        "titulo": "Tres ensayos de la teoría sexual",
+        "autor": "Sigmund Freud",
+        "anio":1905,
+        "stock": 1,
+        "precio": 1500
+      }
+    ]
+  }

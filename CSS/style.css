@@ -1,0 +1,21 @@
+.libros-continer {
+    background-color: rgb(39, 158, 209);
+    height: 100px;
+    width: 100px;
+}
+
+
+
+
+.bg_ingreso{
+    background-color: aquamarine;
+    height: 300px;
+    width: 300px;
+   padding-left: 90px;
+   padding-top: 90px;
+   display: none;
+}
+
+.body{
+    background-color: rgb(216, 128, 20);
+}
