@@ -113,7 +113,7 @@ btnAgregar.addEventListener("click", function(){
    
     /*CONSULTAR SOBRE AUTOR Y TÍTULO*/   
     
-     const miBibliote=[]
+    
      const filtrarBtn = document.getElementById("buscar");
       filtrarBtn.addEventListener("click", () => {
         filtrarProductos();
@@ -132,30 +132,38 @@ btnAgregar.addEventListener("click", function(){
           preConfirm: (palabraClave) => {
               palabraClave = palabraClave.trim().toUpperCase()
               let resultado = traerLibreria.filter((x)=> x.titulo.toUpperCase().includes(palabraClave)|| x.autor.toUpperCase().includes(palabraClave))
-  
-               if (resultado.length > 0){
-                  console.table(resultado)
-                 
-                  Swal.fire({
+              console.table(resultado)
+               resultado.length > 0? Swal.fire({
                       title: 'Resultados de búsqueda',
                       html: '<table><tr><th>Titulo</th><th>Autor</th><th>Año</th><th>Stock</th><th>Precio</th></tr>' +
                             resultado.map(x=> `<tr><td>${x.titulo}</td><td>${x.autor}</td><td>${x.anio}</td><td>${x.stock}</td><td>${x.precio}</td></tr>`).join('') +
                             '</table>',
                       confirmButtonText: 'OK'
                       
-                  })
-                  miBibliote.push(x.titulo && x.autor)
-                  
-              } else {
+                  }):
                   Swal.fire({
                       title: 'No se encontraron coincidencias',
                       icon: 'error',
                       confirmButtonText: 'OK'
                   })
-              }
+              
           }
       });
   
   }
   
   console.table(traerLibreria)
+/*MI CARRO*/
+ const miCarro= document.getElementById("miCarro")
+ const mostrarCarro= document.getElementById("mostrarCarro")
+ const elementoB =document.getElementsByClassName("bg-ingreso__2")
+ /*
+ traerLibreria.push(libro);
+      localStorage.setItem("Librería", JSON.stringify(traerLibreria));
+      
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Tu trabajo ha sido guardado",
+        showConfirmButton: false,
+        timer: 1500,*/
