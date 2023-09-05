@@ -27,11 +27,3 @@
     background-color: rgb(211, 201, 201);
    width: 90%;
 }
-.bg_ingreso__2{
-    background-color: aquamarine;
-    height: 300px;
-    width: 300px;
-   padding-left: 90px;
-   padding-top: 90px;
-   display: none;
-}

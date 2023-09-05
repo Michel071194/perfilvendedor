@@ -19,7 +19,7 @@ const mostrarLibros=
                     librosContainer.appendChild(librosElement)}, 2000) 
                   })()
                   .catch(error=>{
-                   
+                   console.log("Error al cargar")
                 })
               })
             })
@@ -152,18 +152,4 @@ btnAgregar.addEventListener("click", function(){
   
   }
   
-  console.table(traerLibreria)
-/*MI CARRO*/
- const miCarro= document.getElementById("miCarro")
- const mostrarCarro= document.getElementById("mostrarCarro")
- const elementoB =document.getElementsByClassName("bg-ingreso__2")
- /*
- traerLibreria.push(libro);
-      localStorage.setItem("Librería", JSON.stringify(traerLibreria));
-      
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Tu trabajo ha sido guardado",
-        showConfirmButton: false,
-        timer: 1500,*/
+ 
