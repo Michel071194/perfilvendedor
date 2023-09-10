@@ -6,8 +6,10 @@
 /*MOSTRAR CATALOGO ACTUAL*/
 
 const btnTodosLosProductos= document.getElementById("btnTodosLosProductos")
-const mostrarLibros= 
- btnTodosLosProductos.addEventListener("click",()=>{
+let contador = 0
+const mostrarLibros= btnTodosLosProductos.addEventListener("click",()=>{
+  contador= contador + 1 
+  console.log(contador)
             fetch("./libros.json")
             .then(response=>response.json())
             .then(data=>{
@@ -16,14 +18,19 @@ const mostrarLibros=
               miBiblio.forEach((biblio) => {
                    setTimeout(()=> {const librosElement= document.createElement("li")
                     librosElement.textContent= `Nombre: ${biblio.titulo}, Autor: ${biblio.autor}, Año: ${biblio.anio}, Precio: ${biblio.precio}, Stock: ${biblio.stock}`
-                    librosContainer.appendChild(librosElement)}, 2000) 
+                    librosContainer.appendChild(librosElement)}, 2000)
+                   
                   })()
                   .catch(error=>{
                    console.log("Error al cargar")
                 })
               })
             })
+      
 
+
+           
+    
  /*INGRESAR PRODUCTOS*/
 
  class Libros {
@@ -63,10 +70,12 @@ if (localStorage.getItem("libros")) {
   libreria=libreria
 }
 
-
+/*ABRIR Y CERRAR MENÚ DE AGREGAR LIBRO*/
 const btnagregarProdu= document.getElementById("ingProd")
 const elemento = document.getElementsByClassName("bg_ingreso");
 const btnAgregar=document.getElementById("agregarBtn");
+const btnCerrar=document.getElementById("cerrar")
+
 
 btnagregarProdu.addEventListener("click", ()=>{
 
@@ -75,12 +84,14 @@ btnagregarProdu.addEventListener("click", ()=>{
   }, 2000);
 })
    
- 
+btnCerrar.addEventListener("click", ()=>{
+  elemento[0].style.display= "none";
+})
 
 
   
 /*sUBIR UN LIBRO Y PONERLO A LA VENTA*/
-
+const agregarLibro=
 btnAgregar.addEventListener("click", function(){
     let titulo = document.getElementById("inputtit").value;
     let autor = document.getElementById("inputAutor").value;
@@ -101,15 +112,20 @@ btnAgregar.addEventListener("click", function(){
     } else {
       traerLibreria.push(libro);
       localStorage.setItem("Librería", JSON.stringify(traerLibreria));
+      
       Swal.fire({
         position: "top-end",
         icon: "success",
         title: "Tu trabajo ha sido guardado",
         showConfirmButton: false,
         timer: 1500,
-      });
+      })
+      ;
+      
     }
+    
   })
+  
    
     /*CONSULTAR SOBRE AUTOR Y TÍTULO*/   
     

@@ -2,16 +2,19 @@
     background-color: rgb(39, 158, 209);
     height: 100px;
     width: 100px;
+    display: block;
+    
 }
 
 
 .bg_nav {
     background-color: brown;
     height: 60px;
-    width: 1100px;
+    width: 100%;
     padding: 10px;
-    padding-left: 100px;
-    margin-left: 40px;
+    padding-left: 20px;
+    margin-left: 0px;
+    margin: 0%;
 }
 
 .bg_ingreso{
@@ -25,5 +28,5 @@
 
 .body{
     background-color: rgb(211, 201, 201);
-   width: 90%;
+   width: 100%;
 }
